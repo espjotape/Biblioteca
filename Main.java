@@ -25,7 +25,7 @@ public class Main {
 
    if(resposta.equalsIgnoreCase("sim")) {
     biblioteca.listarLivrosDisponiveis();
-    
+
     System.out.println("Digite o ID do livro que deseja emprestar:");
     int livroId = scanner.nextInt();
     scanner.nextLine();
@@ -35,6 +35,7 @@ public class Main {
      System.out.println("Digite seu nome:");
      String nomeUsuario = scanner.nextLine();
      biblioteca.emprestarLivro(livroEscolhido, nomeUsuario);
+     System.out.println("O livro " + livroEscolhido.getTitulo() + " foi emprestado para " + nomeUsuario);
     } else{
      System.out.println("Livro não encontrado.");
     }
@@ -43,9 +44,8 @@ public class Main {
     System.out.println("Fim da aplicação, Obrigado por utilizar nosso sistema.");
     break;
    }
-   scanner.close();
   }
-
+  scanner.close();
  } 
 }
 
