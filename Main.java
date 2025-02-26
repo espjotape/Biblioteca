@@ -20,22 +20,28 @@ public class Main {
   biblioteca.adicionarLivro(livro3);
 
   while (true) {
-   System.out.println("Deseja ver os livros disponíveis? (sim/não)");
+   // Verifica se ainda há livros disponíveis antes de continuar
+   if (biblioteca.todosLivrosEmprestados()) {
+    System.out.println("Não há livros disponíveis no momento.");
+    break;
+   }
+
+   System.out.println("\nDeseja ver os livros disponíveis? (sim/não)");
    String resposta = scanner.nextLine();
 
    if(resposta.equalsIgnoreCase("sim")) {
     biblioteca.listarLivrosDisponiveis();
 
-    System.out.println("Digite o ID do livro que deseja emprestar:");
+    System.out.println("\nDigite o ID do livro que deseja emprestar:");
     int livroId = scanner.nextInt();
     scanner.nextLine();
-
+     
     Livro livroEscolhido = biblioteca.buscarLivroPorId(livroId);
     if(livroEscolhido != null ) {
-     System.out.println("Digite seu nome:");
+     System.out.println("\nDigite seu nome:");
      String nomeUsuario = scanner.nextLine();
      biblioteca.emprestarLivro(livroEscolhido, nomeUsuario);
-     System.out.println("O livro " + livroEscolhido.getTitulo() + " foi emprestado para " + nomeUsuario);
+     System.out.println("O Livro " + livroEscolhido.getTitulo() + " foi emprestado para: " + nomeUsuario);
     } else{
      System.out.println("Livro não encontrado.");
     }
@@ -44,6 +50,7 @@ public class Main {
     System.out.println("Fim da aplicação, Obrigado por utilizar nosso sistema.");
     break;
    }
+   System.out.println("\n--------------------------------------\n");
   }
   scanner.close();
  } 

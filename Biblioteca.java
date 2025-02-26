@@ -21,7 +21,7 @@ public class Biblioteca {
  }
 
  //Método de Realizar empréstimo de um livro
-  public void emprestarLivro(Livro livro, String nomeUsuario) {
+ public void emprestarLivro(Livro livro, String nomeUsuario) {
    if(livro.isDisponivel()) {
     LocalDate dataEmprestimo = LocalDate.now();
     Emprestimo novoEmprestimo = new Emprestimo(livro, nomeUsuario, dataEmprestimo);
@@ -40,4 +40,13 @@ public class Biblioteca {
  }
    return null; // Retorna null se o livro não for encontrado
  }
+
+ public boolean todosLivrosEmprestados() {
+  for (Livro livro : livros) {
+      if (livro.isDisponivel()) {
+          return false; // Ainda há pelo menos um livro disponível
+      }
+  }
+  return true; // Todos os livros foram emprestados
+}
  }
