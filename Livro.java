@@ -12,8 +12,8 @@ public class Livro {
      this.id = id;
      this.titulo = titulo;
      this.autor = autor;
-     this.dataCadastro = dataCadastro;
-     this.dataAtualizacao = dataAtualizacao;
+     this.dataCadastro = LocalDate.now();
+     this.dataAtualizacao = LocalDate.now();
      this.disponivel = true;
     }
 

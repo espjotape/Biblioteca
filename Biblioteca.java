@@ -4,7 +4,6 @@ import java.util.List;
 
 public class Biblioteca {
  private List<Livro> livros = new ArrayList<>();
- //private List<Autor> autores = new ArrayList<>();
  private List<Emprestimo> emprestimos = new ArrayList<>();
 
  //Método de Adicionar Livros
@@ -32,4 +31,13 @@ public class Biblioteca {
     System.out.println("Livro não disponível para empréstimo.");
    }
   }
+ 
+ public Livro buscarLivroPorId(int id) {
+  for (Livro livro : livros) {
+   if (livro.getId() == id) {
+    return livro;
+   }
+ }
+   return null; // Retorna null se o livro não for encontrado
+ }
  }
